@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <title>Javsacript 1</title>
+  <style>
+    h1, h2 { margin: 0; font-size: 1rem; }
+    div { background: green; border-radius: 50%; display: inline-block;  }
+  </style>
+</head>
+<body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
+  <h1>x 241</h1>
+  <h2>y 173</h2>
+  <img class="one" style="width: 350px; height: 241px;" src="https://cdn.glitch.com/31085184-aaab-46e4-8b62-b94e96d23bb9%2F1.gif?v=1605727573319"></img>
+  <img class="two" style="width: 173px; height: 173px;" src="https://cdn.glitch.com/31085184-aaab-46e4-8b62-b94e96d23bb9%2F2.gif?v=1605727580133"></img>
+
+<script type="text/javascript">
+  function assignText() {
+    var header = "Move the pointer";
+    document.querySelector("h1").innerHTML = header;
+    document.addEventListener('mousemove', function (e) {
+      var header = e.x;
+      var header2 = e.y;
+      document.querySelector("h1").innerHTML = "x " + header;
+      document.querySelector("h2").innerHTML = "y " + header2;
+      document.querySelector(".one").style.width = header + "px";
+      document.querySelector(".one").style.height = header + "px";
+      document.querySelector(".two").style.width = header2 + "px";
+      document.querySelector(".two").style.height = header2 + "px";
+    });
+  }
+  assignText();
+</script>
+
+</body></html>
