@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>scents safari</title>
+    <meta charset="utf-8">
+    <meta name="description" content="360&deg; Image Gallery - A-Frame">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+  <style>
+            #smellscape{
+              position: absolute;
+              left: 20px;
+              top: 20px;
+              color: white;
+              z-index: 100;
+              font-family: Helvetica;
+              font-size: 1em;
+              font-weight: normal;
+            }
+                #guide{
+              position: absolute;
+              left: 300px;
+              top: 20px;
+              color: white;
+              z-index: 100;
+              font-family: Helvetica;
+              font-size: 0.3em;
+              font-weight: normal;
+            }
+        </style>
+  <script id="link" type="text/html">
+      <a-entity class="link"
+        geometry="primitive: circle; radium: 0.151"
+        material="shader: flat; src: ${thumb}"
+        event-set__mouseenter="scale: 3 3 3"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"
+        sound="on: click; src: #click-sound"></a-entity>
+    </script>
+  </head>
+
+  <body>
+    <div id="smellscape">SMELLSCAPE</div>
+    <div id="guide">
+      <p> We are now in providence,RI, My address</p>
+      <p> Turn on the music!</p>
+      <p> Use the arrow keys to move the cursor and begin your scents safari!</p>
+      <p> Move the green cursor circle to signals and click it to explore!</p></div>
+    <a-scene>
+      <a-assets>
+        <img id="flower-thumb" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fin%20space%20-02-02-02.png?v=1607482969732">
+        <img id="plants-thumb" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Ficon%20-02.png?v=1607485046879">
+        <img id="dumpster-thumb" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Ficon%20-04.png?v=1607485046879">
+        <img id="water-thumb" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Ficon%20-05.png?v=1607485046984">
+        <img id="car-thumb" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Ficon%20-06.png?v=1607485046970">
+        
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <img id="sky" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fcity.jpg?v=1607463098487">
+        <img id="sky2" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fsky2.jpg?v=1607470866638">
+        <img id="sky3" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fsky3.jpg?v=1607482312355">
+        <img id="sky4" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fsky4.jpg?v=1607486258221">
+        <img id="sky5" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fsky5.jpg?v=1607486368485">
+        <a-asset-item id="city"  src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fpvdblack.gltf?v=1607466353765"></a-asset-item>
+        ></a-asset-item>
+        
+      </a-assets>
+      
+      
+      <a-entity gltf-model="#city" position="23.5 0 96.69" rotate="0 -35.3 0" scale="0.1 0.1 0.1"></a-entity>
+      <a-obj-model
+        src="#Donut1"
+        position="23 10 96"
+        rotation="0 45 45"
+        scale="0.1 0.1 0.1"
+        color="#e9685b"
+        animation__position="property: object3D.position.y; to: 0.5; dir: alternate; dur: 2000; loop: true"
+        animation__mouseenter="property: scale; to: 0.5 0.5 0.5; dur: 3; startEvents: mouseenter"
+        animation__mouseleave="property: scale; to: 0.1 0.1 0.1; dur: 3; startEvents: mouseleave"
+      ></a-obj-model>
+       <!-- PARTICLESYSTEM links. -->
+        <a-entity id="#house" position="23 2 96" scale="0.03 0.03 0.03"  particle-system="preset: dust; color: #E00AA3" loop: true></a-entity>
+        <a-entity id="#dust" position="26 1 87" scale="0.03 0.03 0.03"  particle-system="preset: dust; color: #08826D,#FFFFFF" loop: true></a-entity>
+        <a-entity id="#dumster" position="20 2 74" scale="0.03 0.03 0.03"  particle-system="preset: dust; color: #BFA60D,#FFE000" loop: true></a-entity>
+        <a-entity id="#water" position="13 2 96" scale="0.04 0.03 0.6" rotation="0 -1 0"  particle-system="preset: dust; color: #009EFF" loop: true></a-entity>
+        <a-entity id="#car exhausted" position="17.5 2 97.29" scale="0.01 0.03 0.36" rotation="0 -1 0"  particle-system="preset: dust; color: #767676" loop: true></a-entity>
+      <!-- Image links. -->
+
+        <a-entity layout="type: line; margin: 1.5"  position="22 4 96" rotation="0 90 0" scale="0.3 0.3 0.3" template="src: #link" data-src="#sky3" data-thumb="#flower-thumb"></a-entity>
+        <a-entity layout="type: line; margin: 1.5"  position="26 4 87" rotation="180 -180 180" scale="0.3 0.3 0.3" template="src: #link" data-src="#sky" data-thumb="#plants-thumb"></a-entity>
+        <a-entity layout="type: line; margin: 1.5"position="20 4 74" rotation="180 -180 180" scale="0.3 0.3 0.3" template="src: #link" data-src="#sky2" data-thumb="#dumpster-thumb"></a-entity>
+        <a-entity layout="type: line; margin: 1.5"  position="13 4 96" rotation="0 90 0" scale="0.3 0.3 0.3" template="src: #link" data-src="#sky4" data-thumb="#water-thumb"></a-entity>
+        <a-entity layout="type: line; margin: 1.5"position="17.5 4 87.29" rotation="0 90 0" scale="0.3 0.3 0.3" template="src: #link" data-src="#sky5" data-thumb="#car-thumb"></a-entity>
+      
+
+      <!-- Camera + cursor. -->
+      <a-camera position="33 3 95" rotation="0 50 0">
+      <a-cursor id="cursor" color="green" ></a-cursor>
+      </a-camera>
+      
+     <a-entity text="south main st; color: #08826D" position="23 10 96" scale="10 10 10"></a-entity>
+
+      
+      <a-sky id="image-360" radius="600" src="#sky" scale="2 2 2"
+             animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
+             animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
+      <a-sound src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2FThomas%20Greenberg%20-%20Clear%20As%20Day.mp3?v=1607479485764" autoplay="true" position="-3 1 -4" loop="true"></a-sound>
+      </a-scene>
+  </body>
+</html>
