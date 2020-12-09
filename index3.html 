@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <title>scents safari</title>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+  <style>
+
+            #smellscape{
+              position: absolute;
+              left: 20px;
+              top: 20px;
+              color: white;
+              z-index: 100;
+              font-family: Helvetica;
+              font-size: 1em;
+              font-weight: normal;
+            }
+        </style>
+  </head>
+
+  <body>
+    <div id="smellscape">SMELLSCAPE</div>
+    <a-scene>
+      <a-assets>
+
+        
+        <img id="city-thumb" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fthumb-city.jpg?v=1607456069443">
+        <img id="cubes-thumb" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fthumb-cubes.jpg?v=1607456297680">
+        <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fthumb-sechelt.jpg?v=1607456297739">
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <img id="sky" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fcity.jpg?v=1607463098487">
+        <img id="sky2" crossorigin="anonymous" src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fsky2.jpg?v=1607470866638">
+        
+        <!-- Image link template to be reused. -->
+        <script id="link" type="text/html">
+          <a-entity class="link"
+            geometry="primitive: plane; height: 0.5; width: 0.5"
+            material="shader: flat; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 2 2 2"
+            event-set__3="_event: mouseenter; scale: 1 1 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"></a-entity>
+        </script>
+        
+        
+    
+        <a-asset-item
+          id="city"
+          src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2Fpvdblack.gltf?v=1607466353765"
+        ></a-asset-item>
+        <a-asset-item
+          id="Donut1"
+          src="https://cdn.glitch.com/6b41a457-246a-417c-8c5e-a8a55d8f76a1%2FDonut1.obj?v=1606752817203"
+        ></a-asset-item>
+        
+      </a-assets>
+      
+      
+      <a-entity gltf-model="#city" position="23.5 0 96.69" rotate="0 -35.3 0" scale="0.1 0.1 0.1"></a-entity>
+      <a-obj-model
+        src="#Donut1"
+        position="23 10 96"
+        rotation="0 45 45"
+        scale="0.1 0.1 0.1"
+        color="#e9685b"
+        animation__position="property: object3D.position.y; to: 0.5; dir: alternate; dur: 2000; loop: true"
+        animation__mouseenter="property: scale; to: 0.5 0.5 0.5; dur: 3; startEvents: mouseenter"
+        animation__mouseleave="property: scale; to: 0.1 0.1 0.1; dur: 3; startEvents: mouseleave"
+      ></a-obj-model>
+
+ 
+        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb" position="23 4 96" rotation="0 90 0" scale="3 3 3" visible=""><a-entity class="link" geometry="primitive: plane; height: 1; width: 1" material="shader: flat; src: #cubes-thumb" event-set__1="_event: mousedown; scale: 1 1 1" event-set__2="_event: mouseup; scale: 1.2 1.2 1" event-set__3="_event: mouseenter; scale: 1.2 1.2 1" event-set__4="_event: mouseleave; scale: 1 1 1" set-image="on: click; target: #image-360; src: #cubes" sound="on: click; src: #click-sound" position="" rotation="" scale="" visible=""></a-entity></a-entity>
+        <a-entity position="23 4 96" scale="0.04 0.04 0.04" type="1 (box)" particle-system="preset: dust" particle-system="color: #ffffff,#44CC00" loop: true></a-entity>
+        
+      <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb" position="" rotation="" scale="" visible=""><a-entity class="link" geometry="primitive: plane; height: 1; width: 1" material="shader: flat; src: #city-thumb" event-set__1="_event: mousedown; scale: 1 1 1" event-set__2="_event: mouseup; scale: 1.2 1.2 1" event-set__3="_event: mouseenter; scale: 1.2 1.2 1" event-set__4="_event: mouseleave; scale: 1 1 1" set-image="on: click; target: #image-360; src: #city" sound="on: click; src: #click-sound" position="" rotation="" scale="" visible=""></a-entity></a-entity>
+        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb" position="" rotation="" scale="" visible=""><a-entity class="link" geometry="primitive: plane; height: 1; width: 1" material="shader: flat; src: #sechelt-thumb" event-set__1="_event: mousedown; scale: 1 1 1" event-set__2="_event: mouseup; scale: 1.2 1.2 1" event-set__3="_event: mouseenter; scale: 1.2 1.2 1" event-set__4="_event: mouseleave; scale: 1 1 1" set-image="on: click; target: #image-360; src: #sechelt" sound="on: click; src: #click-sound" position="" rotation="" scale="" visible=""></a-entity></a-entity>
+      <!-- Camera + cursor. -->
+      <a-camera position="33 5 95">
+      <a-cursor id="cursor" color="green" ></a-cursor>
+      </a-camera>
+
+      
+      <a-sky id="image-360" radius="600" src="#sky" position="" rotation="" scale="2 2 2" visible="" material="" geometry="" data-set-image-fade-setup="true" animation__fade=""></a-sky>
+      <a-sound src="_YAY.wav" autoplay="true" position="-3 1 -4"></a-sound>
+      </a-scene>
+  </body>
+</html>
